@@ -1,4 +1,4 @@
-package com.example.order
+package com.example.s23006
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,4 +1,4 @@
-package com.example.order.ui.theme
+package com.example.s23006.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
