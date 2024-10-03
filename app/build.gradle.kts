@@ -5,11 +5,9 @@ plugins {
 }
 
 android {
-    namespace = "com.example.order"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.order"
         minSdk = 31
         targetSdk = 34
         versionCode = 1
