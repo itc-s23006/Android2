@@ -5,8 +5,8 @@ plugins {
 }
 
 android {
+    namespace = "jp.ac.it_college.std.s23006.order"
     compileSdk = 34
-
     defaultConfig {
         minSdk = 31
         targetSdk = 34

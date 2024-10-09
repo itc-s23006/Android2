@@ -43,6 +43,7 @@ import jp.ac.it_college.std.s23006.order.ui.theme.BaseColor
 import jp.ac.it_college.std.s23006.order.ui.theme.Lime600
 import jp.ac.it_college.std.s23006.order.ui.theme.Orange400
 import jp.ac.it_college.std.s23006.order.ui.theme.Orange900
+
 @Composable
 fun TopView(modifier: Modifier = Modifier, onTapButton: () -> Unit = {}) {
     Column(
