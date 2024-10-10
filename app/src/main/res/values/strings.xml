@@ -5,4 +5,5 @@
     <string name="timer_3_description">add 3 sec.</string>
     <string name="timer_10_description">add 10 sec.</string>
     <string name="plus_one_description">add 1 min.</string>
+    <string name="time_format">%1$02d:%2$02d</string>
 </resources>

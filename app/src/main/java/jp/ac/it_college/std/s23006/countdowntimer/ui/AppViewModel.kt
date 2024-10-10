@@ -2,43 +2,73 @@ package jp.ac.it_college.std.s23006.countdowntimer.ui
 
 import androidx.lifecycle.ViewModel
 import jp.ac.it_college.std.s23006.countdowntimer.logic.MyCountDownTimer
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
+
+const val DEFAULT_TIME = 3 * 60 * 1000L
 
 class AppViewModel : ViewModel() {
-    var uiState = AppUiState()
-        private set
-    var timer: MyCountDownTimer? = null
+    private val _uiState = MutableStateFlow(AppUiState(time = DEFAULT_TIME))
+    val uiState: StateFlow<AppUiState> = _uiState.asStateFlow()
+
+    private var timer: MyCountDownTimer? = null
 
     fun startTimer(millisInFuture: Long) {
-        uiState.time.value = millisInFuture
-        uiState.isRunning.value = true
-        timer = MyCountDownTimer(millisInFuture = millisInFuture,
+        _uiState.update { currentState ->
+            currentState.copy(
+                time = millisInFuture,
+                isRunning = true
+            )
+        }
+
+        timer = MyCountDownTimer(
+            millisInFuture = millisInFuture,
             countDownInterval = 100L,
             changed = { millisUntilFinished ->
-                uiState.time.value = millisInFuture
-                uiState.timeLeft.value = millisUntilFinished
-                uiState.isRunning.value = true
+                _uiState.update { currentState ->
+                    currentState.copy(
+                        time = millisInFuture,
+                        timeLeft = millisUntilFinished,
+                        isRunning = true
+                    )
+                }
             },
             finished = {
-                uiState.time.value = millisInFuture
-                uiState.timeLeft.value = 0
-                uiState.isRunning.value = false
+                _uiState.update { currentState ->
+                    currentState.copy(
+                        time = millisInFuture,
+                        timeLeft = 0,
+                        isRunning = false
+                    )
+                }
             })
         timer?.start()
     }
 
     fun stopTimer() {
         timer?.cancel()
-        uiState.time.value = 3 * 60 * 1000
-        uiState.timeLeft.value = 3 * 60 * 1000
-        uiState.isRunning.value = false
+        _uiState.update { currentState ->
+            currentState.copy(
+                time = DEFAULT_TIME,
+                timeLeft = 3 * 60 * 1000,
+                isRunning = false
+            )
+        }
     }
 
     fun addTime(second: Int) {
-        if (!uiState.isRunning.value) {
-            val newTime = uiState.time.value + second * 1000L
-            uiState.time.value = newTime
-            uiState.timeLeft.value = newTime
-            uiState.isRunning.value = false
+        if (!uiState.value.isRunning) {
+            val newTime = uiState.value.time + second * 1000L
+            _uiState.update {
+                    currentState ->
+                currentState.copy(
+                    time = newTime,
+                    timeLeft = newTime,
+                    isRunning = false
+                )
+            }
         }
     }
 }
