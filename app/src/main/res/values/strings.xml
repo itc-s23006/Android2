@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">CountDownTImer</string>
+    <string name="app_name">CountDownTimer</string>
+    <string name="fav_description">Timer</string>
+    <string name="top_app_bar_description">Timer</string>
+    <string name="timer_3_description">add 3 sec.</string>
+    <string name="timer_10_description">add 10 sec.</string>
+    <string name="plus_one_description">add 1 min.</string>
 </resources>

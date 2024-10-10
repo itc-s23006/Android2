@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CountDownTimer</string>
+    <string name="fav_description">タイマー</string>
+    <string name="top_app_bar_description">タイマー</string>
+    <string name="timer_3_description">3秒追加</string>
+    <string name="timer_10_description">10秒追加</string>
+    <string name="plus_one_description">1分追加</string>
+</resources>
