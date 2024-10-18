@@ -15,8 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import jp.ac.it_college.std.s23006.postmystory.ui.theme.model.Message
-
+import jp.ac.it_college.std.s23006.postmystory.model.Message
 @Composable
 fun ListScreen(
     modifier: Modifier = Modifier,
@@ -46,7 +45,6 @@ fun ListScreen(
         }
     }
 }
-
 @Preview(device = "spec:width=411dp,height=891dp", showBackground = true)
 @Composable
 private fun ListScreenPreview() {
@@ -61,5 +59,5 @@ private fun ListScreenPreview() {
             )
         }
     }
-    ListScreen(messages = messages, onClick = { })
+    ListScreen(messages = messages)
 }

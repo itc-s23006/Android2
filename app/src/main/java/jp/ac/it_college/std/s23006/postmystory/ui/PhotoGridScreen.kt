@@ -26,9 +26,8 @@ fun PhotoGridScreen(
         }
     }
 }
-
 @Preview
 @Composable
 private fun PhotoGridScreenPreview() {
-    PhotoGridScreen(onClick = { })
+    PhotoGridScreen()
 }

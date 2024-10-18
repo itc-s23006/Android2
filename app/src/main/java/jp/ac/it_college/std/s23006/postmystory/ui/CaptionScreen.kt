@@ -22,20 +22,20 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import coil.request.CachePolicy
 import coil.request.ImageRequest
 import coil.transform.RoundedCornersTransformation
 import jp.ac.it_college.std.s23006.postmystory.R
-
 @Composable
 fun CaptionScreen(
-    selectUrl: String,
     modifier: Modifier = Modifier,
+    selectUrl: String,
     onClick: () -> Unit = {},
     onChange: (String) -> Unit = {}
 ) {
     var text by remember { mutableStateOf("") }
     Column(
-        modifier= modifier,
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AsyncImage(
@@ -46,6 +46,7 @@ fun CaptionScreen(
             model = ImageRequest.Builder(LocalContext.current)
                 .data(selectUrl)
                 .crossfade(true)
+                .diskCachePolicy(CachePolicy.DISABLED)
                 .transformations(
                     RoundedCornersTransformation(40f)
                 )
@@ -73,13 +74,8 @@ fun CaptionScreen(
         }
     }
 }
-
-@Preview(showBackground = true)
+@Preview(device = "spec:width=411dp,height=891dp", showBackground = true)
 @Composable
 private fun CaptionScreenPreview() {
-    CaptionScreen(
-        selectUrl = "https://picsum.photos/200/200",
-        onClick = { },
-        onChange = { }
-    )
+    CaptionScreen(selectUrl = "https://picsum.photos/200/200")
 }

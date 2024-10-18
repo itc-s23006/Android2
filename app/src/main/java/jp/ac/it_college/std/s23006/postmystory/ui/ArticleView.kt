@@ -28,7 +28,7 @@ import coil.request.CachePolicy
 import coil.request.ImageRequest
 import coil.transform.RoundedCornersTransformation
 import jp.ac.it_college.std.s23006.postmystory.R
-import jp.ac.it_college.std.s23006.postmystory.ui.theme.model.Message
+import jp.ac.it_college.std.s23006.postmystory.model.Message
 
 @Composable
 fun ArticleView(
@@ -37,7 +37,7 @@ fun ArticleView(
 ) {
     Column(modifier = modifier) {
         AsyncImage(
-            modifier = modifier
+            modifier = Modifier
                 .aspectRatio(1f)
                 .padding(16.dp)
                 .fillMaxWidth(),
@@ -54,16 +54,13 @@ fun ArticleView(
             placeholder = painterResource(id = R.drawable.now_loading)
         )
         Row(
-            modifier = Modifier
-                .padding(16.dp)
+            modifier = Modifier.padding(16.dp)
         ) {
             Icon(
                 imageVector = Icons.Outlined.ThumbUp,
                 contentDescription = null
             )
-            Text(
-                text =  stringResource(R.string.nice_count, message.nice)
-            )
+            Text(text = stringResource(R.string.nice_count, message.nice))
         }
         var folding by remember { mutableStateOf(true) }
         Text(
@@ -78,15 +75,13 @@ fun ArticleView(
         )
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 private fun ArticleViewPreview() {
     ArticleView(
         message = Message(
             caption = "Hello Android".repeat(20),
-            image =
-            "https://developer.android.com/static/images/brand/android-head_flat.png",
+            image = "https://developer.android.com/static/images/brand/android-head_flat.png",
             nice = 999
         )
     )

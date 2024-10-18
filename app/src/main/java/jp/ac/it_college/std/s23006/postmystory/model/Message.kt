@@ -1,4 +1,4 @@
-package jp.ac.it_college.std.s23006.postmystory.ui.theme.model
+package jp.ac.it_college.std.s23006.postmystory.model
 
 import androidx.compose.runtime.Stable
 

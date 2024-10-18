@@ -11,7 +11,6 @@ import coil.compose.AsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
 import jp.ac.it_college.std.s23006.postmystory.R
-
 @Composable
 fun PhotoItem(
     modifier: Modifier = Modifier,
@@ -30,10 +29,8 @@ fun PhotoItem(
         placeholder = painterResource(id = R.drawable.now_loading)
     )
 }
-
 @Preview
 @Composable
 private fun PhotoItemPreview() {
-    PhotoItem(photo = "https://picsum.photos/200/200",
-        onClick = { })
+    PhotoItem(photo = "https://picsum.photos/200/200")
 }
