@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TryMySlideshow</string>
+    <string name="top_bar_title">Slideshow app</string>
+    <string name="top_bar_icon_description">Slideshow</string>
+</resources>

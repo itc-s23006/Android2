@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TryMySlideshow</string>
+    <string name="top_bar_title">スライドショーアプリ</string>
+    <string name="top_bar_icon_description">スライドショー</string>
+</resources>
