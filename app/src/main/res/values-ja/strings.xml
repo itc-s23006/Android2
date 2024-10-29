@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WebPageApp</string>
+    <string name="home">ホーム</string>
+    <string name="about">アプリについて</string>
+    <string name="settings">設定</string>
+    <string name="user">ユーザー</string>
+    <string name="nice">いいね</string>
+    <string name="email">メール</string>
+    <string name="star">スター</string>
+    <string name="menu">メニュー</string>
+    <string name="home_tab">ホームタブ</string>
+    <string name="recommended">おすすめ</string>
+    <string name="popular">人気</string>
+    <string name="category">カテゴリ</string>
+    <string name="new_arrivals">新着</string>
+    <string name="rankings">ランキング</string>
+</resources>
