@@ -13,17 +13,16 @@ import jp.ac.it_college.std.s23006.myslideshow.R
 @Composable
 fun PagerItem(
     modifier: Modifier = Modifier,
-    @DrawableRes imageRes: Int,
-    ) {
+    @DrawableRes imageRes: Int
+) {
     Image(
         painter = painterResource(id = imageRes),
         alignment = Alignment.Center,
         contentScale = ContentScale.Crop,
         contentDescription = null,
-        modifier = Modifier
+        modifier = modifier
     )
 }
-
 @Preview
 @Composable
 private fun PagerItemPreview() {

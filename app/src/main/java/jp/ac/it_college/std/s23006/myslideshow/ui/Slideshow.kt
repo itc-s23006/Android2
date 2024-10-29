@@ -15,17 +15,23 @@ import androidx.compose.ui.unit.dp
 import jp.ac.it_college.std.s23006.myslideshow.R
 
 val resources = listOf(
-    R.drawable.slide00, R.drawable.slide01, R.drawable.slide02,
-    R.drawable.slide03, R.drawable.slide04, R.drawable.slide05,
-    R.drawable.slide06, R.drawable.slide07, R.drawable.slide08,
-    R.drawable.slide09
+    R.drawable.slide00,
+    R.drawable.slide01,
+    R.drawable.slide02,
+    R.drawable.slide03,
+    R.drawable.slide04,
+    R.drawable.slide05,
+    R.drawable.slide06,
+    R.drawable.slide07,
+    R.drawable.slide08,
+    R.drawable.slide09,
 )
-
 @Composable
-fun Slideshow(modifier: Modifier = Modifier) {
-    val pagerState = rememberPagerState(pageCount = { resources.size })
+fun Slideshow(
+    modifier: Modifier = Modifier
+) {
+    val pagerState = rememberPagerState { resources.size }
     val config = LocalConfiguration.current
-
     Scaffold(
         topBar = {
             if (config.orientation != Configuration.ORIENTATION_LANDSCAPE) {
@@ -36,25 +42,26 @@ fun Slideshow(modifier: Modifier = Modifier) {
             if (config.orientation != Configuration.ORIENTATION_LANDSCAPE) {
                 BottomBar(pagerState = pagerState)
             }
-        },
-    ) { padding ->
-            VerticalPager(
-                state = pagerState,
-                contentPadding = PaddingValues(
-                    vertical =
-                    if (config.orientation != Configuration.ORIENTATION_LANDSCAPE) 60.dp
-                    else 0.dp
-                ),
-                modifier = Modifier.padding(padding)
-            ) { page ->
-                PagerItem(
-                    imageRes = resources[page],
-                    modifier = Modifier.fillMaxSize()
-                )
-            }
         }
+    ) { innerPadding ->
+        VerticalPager(
+            state = pagerState,
+            contentPadding = PaddingValues(
+                vertical = if (config.orientation != Configuration.ORIENTATION_LANDSCAPE) {
+                    60.dp
+                } else {
+                    0.dp
+                }
+            ),
+            modifier = modifier.padding(innerPadding)
+        ) { page ->
+            PagerItem(
+                imageRes = resources[page],
+                modifier = Modifier.fillMaxSize()
+            )
+        }
+    }
 }
-
 @Preview
 @Composable
 private fun SlideshowPreview() {
