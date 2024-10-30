@@ -8,7 +8,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -19,18 +19,19 @@ import jp.ac.it_college.std.s23006.webpageapp.R
 import jp.ac.it_college.std.s23006.webpageapp.ui.theme.WebView
 
 @Composable
-fun TabRowScreen(
-    modifier: Modifier = Modifier
-) {
-    var tabIndex by remember { mutableStateOf(0) }
-    Scaffold(bottomBar = {
-        BottomAppBar {
-            TabRowView(tabIndex = tabIndex, onTabChange = { tabIndex = it })
+fun TabRowScreen(modifier: Modifier = Modifier) {
+    var tabIndex by remember { mutableIntStateOf(0) }
+    Scaffold(
+        modifier = modifier,
+        bottomBar = {
+            BottomAppBar {
+                TabRowView(tabIndex = tabIndex, onTabChange = { tabIndex = it })
+            }
         }
-    }) { padding ->
+    ) { innerPadding ->
         Box(
             modifier = Modifier
-                .padding(padding)
+                .padding(innerPadding)
                 .fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
@@ -42,7 +43,6 @@ fun TabRowScreen(
         }
     }
 }
-
 @Preview
 @Composable
 private fun TabRowScreenPreview() {

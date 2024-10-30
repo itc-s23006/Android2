@@ -10,7 +10,7 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -20,30 +20,32 @@ import jp.ac.it_college.std.s23006.webpageapp.R
 
 @Composable
 fun TabRowView(
-    modifier: Modifier = Modifier,
-    tabIndex: Int, onTabChange: (Int) -> Unit) {
+    modifier: Modifier = Modifier, tabIndex: Int, onTabChange: (Int) -> Unit = {}
+) {
     val tabs = listOf(
         stringResource(id = R.string.home) to Icons.Default.Home,
         stringResource(id = R.string.about) to Icons.Default.Info,
-        stringResource(id = R.string.settings) to Icons.Default.Settings
+        stringResource(id = R.string.settings) to Icons.Default.Settings,
     )
-
     TabRow(modifier = modifier, selectedTabIndex = tabIndex) {
         tabs.forEachIndexed { index, (label, icon) ->
-            Tab(selected = tabIndex == index,
-                onClick = { onTabChange(index)},
-                text = { Text(label) },
+            Tab(
+                selected = tabIndex == index,
+                onClick = { onTabChange(index) },
+                text = { Text(text = label) },
                 icon = {
-                    Icon(imageVector = icon, contentDescription = label)
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = label
+                    )
                 }
             )
         }
     }
 }
-
 @Preview
 @Composable
 private fun TabRowViewPreview() {
-    var index by remember { mutableStateOf(0) }
+    var index by remember { mutableIntStateOf(0) }
     TabRowView(tabIndex = index, onTabChange = { index = it })
 }

@@ -18,20 +18,22 @@ fun SecondaryTabRowView(
     onTabChange: (Int) -> Unit = {}
 ) {
     SecondaryScrollableTabRow(
+        modifier = modifier,
         selectedTabIndex = tabIndex,
         containerColor = MaterialTheme.colorScheme.secondaryContainer
     ) {
         tabs.forEachIndexed { index, title ->
-            Tab(text = { Text(title) },
+            Tab(
+                text = { Text(text = title) },
                 selected = tabIndex == index,
-                onClick = { onTabChange(index) })
+                onClick = { onTabChange(index) }
+            )
         }
     }
 }
-
-@Preview(showBackground = true)
+@Preview
 @Composable
 private fun SecondaryTabRowViewPreview() {
     val tabs = listOf("おすすめ", "人気", "カテゴリ", "新着", "ランキング")
-    SecondaryTabRowView(tabs,0, onTabChange = { })
+    SecondaryTabRowView(tabs = tabs, tabIndex = 0)
 }

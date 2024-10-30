@@ -15,7 +15,7 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -37,23 +37,27 @@ fun ScrollableTabRowView(
         stringResource(id = R.string.nice) to Icons.Default.ThumbUp,
         stringResource(id = R.string.email) to Icons.Default.Email,
         stringResource(id = R.string.star) to Icons.Default.Star,
-        stringResource(id = R.string.menu) to Icons.Default.Menu
+        stringResource(id = R.string.menu) to Icons.Default.Menu,
     )
     ScrollableTabRow(modifier = modifier, selectedTabIndex = tabIndex) {
         tabs.forEachIndexed { index, (title, icon) ->
             Tab(
                 selected = tabIndex == index,
                 onClick = { onTabChange(index) },
-                text = { Text(title) },
-                icon = { Icon(imageVector = icon, contentDescription = title) }
+                text = { Text(text = title) },
+                icon = {
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = title
+                    )
+                }
             )
         }
     }
 }
-
 @Preview
 @Composable
 private fun ScrollableTabRowViewPreview() {
-    var index by remember { mutableStateOf(0) }
+    var index by remember { mutableIntStateOf(0) }
     ScrollableTabRowView(tabIndex = index, onTabChange = { index = it })
 }

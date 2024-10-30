@@ -15,4 +15,5 @@
     <string name="category">カテゴリ</string>
     <string name="new_arrivals">新着</string>
     <string name="rankings">ランキング</string>
+    <string name="secondary_title">Secondary Tab Row</string>
 </resources>

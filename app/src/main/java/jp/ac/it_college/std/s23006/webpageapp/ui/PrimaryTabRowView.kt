@@ -11,7 +11,7 @@ import androidx.compose.material3.Tab
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -27,29 +27,29 @@ fun PrimaryTabRowView(
     onTabChange: (Int) -> Unit = {}
 ) {
     val tabs = listOf(
-        stringResource(R.string.home) to Icons.Default.Home,
-        stringResource(R.string.about) to Icons.Default.Info,
-        stringResource(R.string.settings) to Icons.Default.Settings
+        stringResource(id = R.string.home) to Icons.Default.Home,
+        stringResource(id = R.string.about) to Icons.Default.Info,
+        stringResource(id = R.string.settings) to Icons.Default.Settings,
     )
-
     PrimaryTabRow(selectedTabIndex = tabIndex) {
-        tabs.forEachIndexed { index, tab ->
-            Tab(text = { Text(tab.first) },
+        tabs.forEachIndexed { index, (title, icon) ->
+            Tab(
                 selected = tabIndex == index,
                 onClick = { onTabChange(index) },
+                text = { Text(text = title) },
                 icon = {
                     Icon(
-                        imageVector = tab.second, contentDescription = tab.first
+                        imageVector = icon,
+                        contentDescription = title
                     )
                 }
             )
         }
     }
 }
-
-@Preview(showBackground = true)
+@Preview
 @Composable
 private fun PrimaryTabRowViewPreview() {
-    var index by remember { mutableStateOf(0) }
+    var index by remember { mutableIntStateOf(0) }
     PrimaryTabRowView(tabIndex = index, onTabChange = { index = it })
 }
