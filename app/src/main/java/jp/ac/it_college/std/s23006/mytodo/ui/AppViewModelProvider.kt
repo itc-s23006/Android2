@@ -6,11 +6,15 @@ import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
 import jp.ac.it_college.std.s23006.mytodo.TodoApplication
 import jp.ac.it_college.std.s23006.mytodo.ui.home.HomeViewModel
+import jp.ac.it_college.std.s23006.mytodo.ui.item.ItemEntryViewModel
 
 object AppViewModelProvider {
     val Factory = viewModelFactory {
         initializer {
             HomeViewModel(todoApplication().container.itemsRepository)
+        }
+        initializer {
+            ItemEntryViewModel(todoApplication().container.itemsRepository)
         }
     }
 }
