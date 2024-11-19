@@ -9,9 +9,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun GenerationScreen(
@@ -19,6 +21,7 @@ fun GenerationScreen(
     onGenerationSelected: (Int) -> Unit = {},
     viewModel: GenerationViewModel = hiltViewModel()
 ) {
+    val scope = rememberCoroutineScope()
     val generations by viewModel.generations.collectAsState(initial = emptyList())
     Column(
         modifier = modifier.fillMaxSize()
@@ -26,14 +29,17 @@ fun GenerationScreen(
         Text(text = "せだいせんたく")
         Button(
             onClick = {
-               // onGenerationSelected(1)
+//                onGenerationSelected(1)
+                scope.launch {
+                    viewModel.generationTest()
+                }
             }
         ) {
             Text(text = "ランダムでせだいを追加")
         }
         LazyColumn {
             items(generations) { item ->
-                Text(text = "${item.name} ${item.region}")
+                Text(text = "${item.name} - ${item.region}")
             }
         }
     }

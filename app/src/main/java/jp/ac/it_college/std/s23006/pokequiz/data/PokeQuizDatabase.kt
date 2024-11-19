@@ -9,8 +9,7 @@ import jp.ac.it_college.std.s23006.pokequiz.data.entity.GenerationEntity
     entities = [
         GenerationEntity::class
     ],
-    version = 1,
-    exportSchema = false
+    version = 1
 )
 abstract class PokeQuizDatabase : RoomDatabase() {
     abstract fun generationDao(): GenerationDao
