@@ -22,7 +22,8 @@ fun GenerationScreen(
     viewModel: GenerationViewModel = hiltViewModel()
 ) {
     val scope = rememberCoroutineScope()
-    val generations by viewModel.generations.collectAsState(initial = emptyList())
+    val uiState by viewModel.uiState.collectAsState()
+    val generations by uiState.generations.collectAsState(initial = emptyList())
     Column(
         modifier = modifier.fillMaxSize()
     ) {
@@ -31,7 +32,7 @@ fun GenerationScreen(
             onClick = {
 //                onGenerationSelected(1)
                 scope.launch {
-                    viewModel.generationTest()
+                    // viewModel.generationTest()
                 }
             }
         ) {

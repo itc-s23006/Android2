@@ -16,4 +16,7 @@ interface GenerationDao {
 
     @Query("SELECT * FROM generations")
     fun getAllGenerations(): Flow<List<GenerationEntity>>
+
+    @Query("SELECT COUNT(*) FROM generations")
+    fun getGenerationCount(): Flow<Int>
 }
